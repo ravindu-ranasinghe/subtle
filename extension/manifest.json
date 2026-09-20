@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "Subtle",
+  "version": "0.0.1",
+  "description": "Real-time dual-language captions over any video, on-device.",
+  "minimum_chrome_version": "128",
+  "permissions": [
+    "tabCapture",
+    "offscreen",
+    "storage",
+    "unlimitedStorage",
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Subtle captions",
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "toggle-captions": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Show or hide captions"
+    },
+    "toggle-translation": {
+      "suggested_key": {
+        "default": "Alt+Shift+T"
+      },
+      "description": "Show or hide the translation line"
+    },
+    "toggle-immersion": {
+      "suggested_key": {
+        "default": "Alt+Shift+I"
+      },
+      "description": "Immersion mode: original only"
+    },
+    "replay-line": {
+      "suggested_key": {
+        "default": "Alt+Shift+R"
+      },
+      "description": "Jump back to the start of the last caption"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle",
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

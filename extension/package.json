@@ -1,0 +1,27 @@
+{
+  "name": "@subtle/extension",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build && SUBTLE_TARGET=content vite build && SUBTLE_TARGET=worklet vite build && node check-dist.mjs",
+    "dev": "pnpm build && SUBTLE_WATCH=1 sh -c 'vite build & SUBTLE_TARGET=content vite build & SUBTLE_TARGET=worklet vite build & wait'",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.7.6",
+    "@subtle/shared": "workspace:*",
+    "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.304",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jsdom": "^26.0.0",
+    "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4",
+    "vite": "^6.1.0"
+  }
+}

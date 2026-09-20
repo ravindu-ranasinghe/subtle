@@ -1,0 +1,20 @@
+{
+  "name": "@subtle/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./mocks": "./mocks/index.ts",
+    "./messages": "./messages.ts",
+    "./interfaces": "./interfaces.ts",
+    "./timing": "./timing.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.304"
+  }
+}

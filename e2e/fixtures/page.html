@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Subtle e2e</title>
+    <style>
+      body { margin: 0; background: #111; color: #eee; font: 14px system-ui, sans-serif; }
+      main { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+      video { width: 100%; background: #000; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Subtle e2e page</h1>
+      <!-- A real <video> so the content script has something to find, sync
+           against and position the overlay over. Its audio is silent: the
+           speech is injected into the offscreen document instead, because
+           tabCapture cannot be granted without a real action click. -->
+      <video id="v" controls playsinline muted></video>
+    </main>
+    <script>
+      // A live canvas stream rather than a recorded file: currentTime advances
+      // for as long as the test needs and never ends, and there is no minutes
+      // long recording step before the page is usable. The e2e does not seek,
+      // so losing seekability costs nothing.
+      const canvas = document.createElement('canvas');
+      canvas.width = 640;
+      canvas.height = 360;
+      const ctx = canvas.getContext('2d');
+      const video = document.querySelector('#v');
+      video.srcObject = canvas.captureStream(15);
+      setInterval(() => {
+        const t = video.currentTime;
+        ctx.fillStyle = `hsl(${(t * 30) % 360} 40% 18%)`;
+        ctx.fillRect(0, 0, 640, 360);
+        ctx.fillStyle = '#ffffff44';
+        ctx.font = '40px system-ui';
+        ctx.fillText(`${t.toFixed(1)}s`, 24, 60);
+      }, 66);
+      window.__videoReady = true;
+    </script>
+  </body>
+</html>

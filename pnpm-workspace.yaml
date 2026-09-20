@@ -1,0 +1,5 @@
+packages:
+  - shared
+  - extension
+  - bench
+  - e2e

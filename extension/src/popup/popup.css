@@ -1,0 +1,66 @@
+/* A linked stylesheet rather than inline styles: the extension CSP allows
+   'self' and says nothing about 'unsafe-inline'. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #16181d;
+  --muted: #5b6472;
+  --line: #d9dee6;
+  --accent: #2563eb;
+  --danger: #b42318;
+  --field: #f4f6f9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181d; --fg: #eef1f6; --muted: #9aa4b2; --line: #2c323c;
+    --accent: #60a5fa; --danger: #f87171; --field: #1e222a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; width: 340px; background: var(--bg); color: var(--fg);
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { padding: 12px 14px 16px; }
+h1 { font-size: 15px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+h1 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+h1 .dot.on { background: #16a34a; }
+section { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 12px; }
+section > h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+label { display: block; margin-bottom: 8px; }
+label > span { display: block; color: var(--muted); margin-bottom: 3px; font-size: 12px; }
+select, input[type="range"] { width: 100%; }
+select {
+  padding: 5px 6px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--field); color: inherit; font: inherit;
+}
+.row { display: flex; gap: 8px; }
+.row > * { flex: 1; min-width: 0; }
+button {
+  padding: 7px 10px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--field); color: inherit; font: inherit; cursor: pointer;
+}
+button:hover:not([disabled]) { border-color: var(--accent); }
+button[disabled] { opacity: .55; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+button.wide { width: 100%; }
+.models { display: grid; gap: 4px; }
+.models label { display: flex; align-items: baseline; gap: 7px; margin: 0; cursor: pointer; }
+.models .size { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+.check { display: flex; align-items: center; gap: 7px; }
+.check input { margin: 0; }
+progress { width: 100%; height: 6px; }
+.error {
+  border: 1px solid var(--danger); border-radius: 6px; padding: 8px 10px;
+  margin-bottom: 10px; color: var(--danger); background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+.error button { margin-top: 7px; }
+.words { max-height: 168px; overflow-y: auto; margin: 0 0 8px; padding: 0; list-style: none; }
+.words li { display: flex; gap: 6px; align-items: baseline; padding: 4px 0; border-bottom: 1px solid var(--line); }
+.words li:last-child { border-bottom: 0; }
+.words .w { font-weight: 600; }
+.words .t { color: var(--muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.words .x { border: 0; background: none; color: var(--muted); padding: 0 4px; line-height: 1; }
+.empty { color: var(--muted); margin: 0 0 8px; }
+.hint { color: var(--muted); font-size: 12px; margin: 6px 0 0; }

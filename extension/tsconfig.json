@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["chrome", "vite/client"],
+    "jsx": "react-jsx",
+    "paths": {
+      "@subtle/shared": ["../shared/index.ts"],
+      "@subtle/shared/mocks": ["../shared/mocks/index.ts"],
+      "@subtle/shared/*": ["../shared/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"]
+}

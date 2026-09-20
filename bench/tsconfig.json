@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@subtle/shared": ["../shared/index.ts"],
+      "@subtle/shared/mocks": ["../shared/mocks/index.ts"],
+      "@subtle/shared/*": ["../shared/*"]
+    }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", ".cache", "clips"]
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node", "chrome"],
+    "paths": {
+      "@subtle/shared": ["../shared/index.ts"],
+      "@subtle/shared/*": ["../shared/*"]
+    }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "profile", "test-results"]
+}

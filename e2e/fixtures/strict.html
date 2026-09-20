@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Subtle e2e — strict CSP</title>
+    <link rel="stylesheet" href="./strict.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Subtle e2e page — strict CSP</h1>
+      <div id="wrap"><button id="fs">fullscreen</button></div>
+      <!-- A real <video> so the content script has something to find, sync
+           against and position the overlay over. Its audio is silent: the
+           speech is injected into the offscreen document instead, because
+           tabCapture cannot be granted without a real action click. -->
+      <video id="v" controls playsinline muted></video>
+    </main>
+    <script src="./strict.js"></script>
+  </body>
+</html>
